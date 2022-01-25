@@ -40,7 +40,6 @@ int main()
 {
   buf_t buf(1024);
   buf.fd = STDIN_FILENO;
-  std::chrono::steady_clock::time_point start;
   size_t npkts = 0;
 #define BUILD_BOOK 1
 #if !BUILD_BOOK
@@ -55,6 +54,7 @@ int main()
                                                            // good measure
 #endif
   printf("%lu\n", sizeof(order_book) * order_book::MAX_BOOKS);
+  std::chrono::steady_clock::time_point start;
   while (is_ok(buf.ensure(3))) {
     if (npkts) ++npkts;
     itch_t const msgtype = itch_t(*buf.get(2));
