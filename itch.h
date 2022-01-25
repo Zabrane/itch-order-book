@@ -1,5 +1,6 @@
 #pragma once
 #include <sys/types.h>
+#include "endian.h"
 
 enum class itch_t {
   SYSEVENT = 'S',
